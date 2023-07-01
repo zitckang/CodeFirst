@@ -1,0 +1,33 @@
+﻿using CodeFirst.Data;
+using CodeFirst.Models.Domain;
+using Microsoft.EntityFrameworkCore;
+
+namespace CodeFirst.Repositories
+{
+    public class RegionRepository : IRegionRepository //implement interface
+    {
+        private readonly CodeFirstDBContext codeFirstDBContext;  // line 8 use at line 20
+
+        //inject codeFirstDBContext though the contructor 'RegionRepository'
+        public RegionRepository(CodeFirstDBContext codeFirstDBContext) //CodeFirstDBContext using CodeFirst.Data; //codeFirstDBContext right click assign and field readonly 
+        {
+            
+            this.codeFirstDBContext = codeFirstDBContext;
+        }
+
+
+        //Synchrpnous 同步 API
+        //RegionRepository.cs name as sqlregionrepository also can 
+        //public IEnumerable<Region> GetAll()
+        //{
+        //    return codeFirstDBContext.Regions.ToList();
+        //}
+
+        //Asynchronous 异步 API
+        public async Task<IEnumerable<Region>> GetAllAsync()
+        {
+            //这里用 await 上面就要用 async 
+            return await codeFirstDBContext.Regions.ToListAsync();//ToListAsync() using Microsoft.EntityFrameworkCore;
+        }
+    }
+}

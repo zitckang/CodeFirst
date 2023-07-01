@@ -1,4 +1,5 @@
 using CodeFirst.Data;
+using CodeFirst.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodeFirst
@@ -20,6 +21,11 @@ namespace CodeFirst
             builder.Services.AddDbContext<CodeFirstDBContext>(options => {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Connectioncodefirst"));
             });
+
+            builder.Services.AddScoped<IRegionRepository, RegionRepository>();
+
+            //Automapper
+            builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
             var app = builder.Build();
 
