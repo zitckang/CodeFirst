@@ -17,7 +17,8 @@ namespace CodeFirst.Controllers
         {
             _logger = logger;
         }
-
+        
+        //Get Method Api
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {

@@ -1,3 +1,6 @@
+using CodeFirst.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace CodeFirst
 {
     public class Program
@@ -12,6 +15,11 @@ namespace CodeFirst
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //inject the CodeFirstDBContext to the Services collection
+            builder.Services.AddDbContext<CodeFirstDBContext>(options => {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Connectioncodefirst"));
+            });
 
             var app = builder.Build();
 
