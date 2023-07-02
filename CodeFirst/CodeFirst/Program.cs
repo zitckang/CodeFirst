@@ -25,7 +25,8 @@ namespace CodeFirst
             builder.Services.AddScoped<IRegionRepository, RegionRepository>();
 
             //Automapper
-            builder.Services.AddAutoMapper(typeof(Program).Assembly);
+            //builder.Services.AddAutoMapper(typeof(Program).Assembly);
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); // same with above why
 
             var app = builder.Build();
 
