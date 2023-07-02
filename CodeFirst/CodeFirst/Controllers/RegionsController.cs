@@ -67,16 +67,16 @@ namespace CodeFirst.Controllers
         }
 
         [HttpGet]
-        //public IActionResult GetAllRegions() //Synchrpnous 同步 API 
-        public async Task<IActionResult> GetAllRegions() //Asynchronous 异步 API
+        public IActionResult GetAllRegions() //Synchrpnous 同步 API 
+        //public async Task<IActionResult> GetAllRegions() //Asynchronous 异步 API
         {
 
             #region Domain Models Testing Code
-            //var regions = regionRepository.GetAll();
-            //var regionNames = regions.Select(r => r.Name).ToList();
+            var regions = regionRepository.GetAll();
+            var regionNames = regions.Select(r => r.Name).ToList();
             //string firstRegionName = regionNames[0];
 
-            //return Json(regionNames);
+            return Json(regionNames);
             //return Json(firstRegionName);
             #endregion Domain Models Testing
 
@@ -126,12 +126,12 @@ namespace CodeFirst.Controllers
 
 
             #region DTO contract models with Automapper Asynchronous 异步 API 
-            var regions = await regionRepository.GetAllAsync();
+            //var regions = await regionRepository.GetAllAsync();
 
-            //return DTO regions with mapper
-            var regionsDTO = mapper.Map<List<Models.DTO.Region>>(regions);
+            ////return DTO regions with mapper
+            //var regionsDTO = mapper.Map<List<Models.DTO.Region>>(regions);
 
-            return Json(regionsDTO);
+            //return Json(regionsDTO);
             #endregion DTO contract models with Automapper
 
 

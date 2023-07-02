@@ -18,10 +18,10 @@ namespace CodeFirst.Repositories
 
         //Synchrpnous 同步 API
         //RegionRepository.cs name as sqlregionrepository also can 
-        //public IEnumerable<Region> GetAll()
-        //{
-        //    return codeFirstDBContext.Regions.ToList();
-        //}
+        public IEnumerable<Region> GetAll()
+        {
+            return codeFirstDBContext.Regions.ToList();
+        }
 
         //Asynchronous 异步 API
         public async Task<IEnumerable<Region>> GetAllAsync()
