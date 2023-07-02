@@ -31,5 +31,10 @@ namespace CodeFirst.Repositories
         }
 
         //SourceTree Testing 1
+        public async Task<IEnumerable<Region>> GetAllAsyncv2()
+        {
+            //这里用 await 上面就要用 async 
+            return await codeFirstDBContext.Regions.ToListAsync();//ToListAsync() using Microsoft.EntityFrameworkCore;
+        }
     }
 }
